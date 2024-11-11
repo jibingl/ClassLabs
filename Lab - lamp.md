@@ -24,7 +24,7 @@ The Apache web server is among the most popular web servers in the world. It’s
 1. Ensure Apache2 is running. Open a browser from your host computer on which the Ubuntu server is running, then type *http://your-server-ip* (Note: Replace *your-server-ip* with your Ubuntu server's IP).
 2. You will get the Apache default web page.
 
-### Custom a web page under Apache defualt settings
+### Create a web page under Apache defualt settings
 1. Next, let's create a custom web page by yourself in the default web server content directory which is */var/www/html/* and name it as **index1.html**. Web page files use http protocol which is based on html language and requires filename with an extention of *.html*.
    ```shell
    sudo vim /var/www/html/index1.html
@@ -37,35 +37,40 @@ The Apache web server is among the most popular web servers in the world. It’s
    ```
 3. Access the web page by typing *http://your-server-ip* in a browser. Observe the difference from the previous Apache default web page.
 
-### Custom a web page with customed configurations
-
-
-5- Creating a Virtual Host for your Website
--------------------------------------------
-When using the Apache web server, you can create virtual hosts to encapsulate configuration details and host more than one domain from a single server. In this guide, we’ll set up a domain called nsa-w24-p2.local.
-
-sudo vim /etc/apache2/sites-available/nsa-w24-p2.conf
-<VirtualHost *:80>
-    ServerName localhost
-    ServerAdmin webadmin@localhost
-    DocumentRoot /var/www/nsa-w24-p2
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-
-With this VirtualHost configuration, we’re telling Apache to serve your_domain using /var/www/your_domain as the web root directory.
-To make sure your configuration file doesn’t contain syntax errors, run the following command:
-sudo apache2ctl configtest
-
-You need to disable the default website that comes installed with Apache. Because Apache’s default configuration would override your virtual host. To disable Apache’s default website, type:
-sudo a2disstie 000-defualt.conf
-
-Now, use a2ensite to enable the new virtual host:
-sudo a2ensite nsa-w24-p2.conf
-
-Finally, reload Apache so these changes take effect:
-sudo systemctl reload apache2
-
+### Create a web page with custom configurations
+1. Creating a *Virtual Host* config-file for your website.
+   -------------------------------------------
+   When using the Apache web server, you can create virtual hosts to encapsulate configuration details and host more than one domain from a single server. In this guide, we’ll set up a domain called nsa-w24-p2.local.
+   ```
+   sudo vim /etc/apache2/sites-available/nsa-w24-p2.conf
+   ```
+2. Add below content into the file.
+   ```
+   <VirtualHost *:80>
+       ServerName localhost
+       ServerAdmin webadmin@localhost
+       DocumentRoot /var/www/nsa-w24-p2
+       ErrorLog ${APACHE_LOG_DIR}/error.log
+       CustomLog ${APACHE_LOG_DIR}/access.log combined
+   </VirtualHost>
+   ```
+   With the line `DocumentRoot /var/www/nsa-w24-p2` in this VirtualHost configuration, we’re telling Apache to serve your_domain using */var/www/nsa-w24-p2* as the web root directory.
+3. To make sure your configuration file doesn’t contain syntax errors, run the following command:
+   ```
+   sudo apache2ctl configtest
+   ```
+4. You need to disable the default website that comes installed with Apache. Because Apache’s default configuration would override your virtual host. To disable Apache’s default website, type:
+   ```
+   sudo a2disstie 000-defualt.conf
+   ```
+5. Now, use a2ensite to enable the new virtual host:
+   ```
+   sudo a2ensite nsa-w24-p2.conf
+   ```
+6. Finally, reload Apache so these changes take effect:
+   ```
+   sudo systemctl reload apache2
+   ```
 
 sudo mkdir /var/www/nsa-w24-p2/
 sudo vim /var/www/nsa-w24-p2/index.html
