@@ -2,8 +2,13 @@
 A LAMP (Linux, Apache, MySQL, Perl/PHP/Python) is one of the most common software stacks for the web's most popular applications. Its generic software stack model has largely interchangeable components.
 
 ## Part 1 - Linux Server
-1. Create a virutal machine running Ubuntu server 24.04
-2. Update your server
+1. Create a virutal machine running Ubuntu server 24.04. If you already had one, skip this step.
+   Specifics | Settings |
+   ----------|----------|
+   Virtual Memory | 2 GB |
+   Virtual Processors | 1 processor * 2 cores |
+   Virtual Network Adapter | NAT |
+2. Update your server before continue.
    ```
    sudo apt update
    sudo apt upgrade
@@ -207,32 +212,34 @@ To test whether PHP is able to connect to MySQL and execute database queries, we
    mysql> show databases;
    ```
 
-Now you can create the PHP script that will connect to MySQL and query for your content. Create a new PHP file in your custom web root directory using your preferred editor:
-sudo vim /var/www/nsa-w24-p2/con-php-mysql.php
+Now we are going to create a PHP script that will connect to MySQL and query for data.
 
-The following PHP script connects to the MySQL database and queries for the content of the labs_db table, exhibiting the results in a list. If there’s a problem with the database connection, it will throw an exception.
+8. Create a new PHP file (**con-php-mysql.php**) in your custom web root directory using your preferred editor:
+   ```
+   sudo vim /var/www/nsa-w24-p2/con-php-mysql.php
+   ```
+9. The following PHP script connects to the MySQL database and queries for the content of the **user** table, exhibiting the results in a list. If there’s a problem with the database connection, it will throw an exception.
+10. Add this content into your **con-php-mysql.php** file, remembering to replace the **Your-password** with your own:
+    ```
+   <?php
+   $servername = "localhost";
+   $username = "sql_admin";
+   $password = "Your-password";
+   $database = "mysql";
+   $table = "user";
 
-Add this content into your con-php-mysql.php script, remembering to replace the user and password with your own:
-<?php
-$servername = "localhost";
-$username = "sql_admin";
-$password = "Your-password";
-$database = "mysql";
-$table = "user";
-
-try {
-  $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-  echo "<h2>User Accounts of MYSQL</h2><ol>";
-  foreach($conn->query("SELECT Host,User,account_locked FROM $table") as $row) {
-    echo "<li>" . $row['Host'] . "</li>";
-  }
-  echo "</ol>";
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
-
-http://<your-server-ip>/con-php-mysql.php
-
-sudo ufw app list
-sudo ufw status
+   try {
+     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+     echo "<h2>User Accounts of MYSQL</h2><ol>";
+     foreach($conn->query("SELECT Host,User,account_locked FROM $table") as $row) {
+       echo "<li>" . $row['Host'] . "</li>";
+     }
+     echo "</ol>";
+   } catch (PDOException $e) {
+       print "Error!: " . $e->getMessage() . "<br/>";
+       die();
+   }
+   ```
+11. Save the php file. Access *http://your-linux-erver-ip/con-php-mysql.php* on your physical host machine. (Screenshot required)
+12. From your Ubuntu server, sign in MySQL console as root and display all current connections to the database server.
+    #### Question 2: Can you find the connection the webpage is using to query data from the **user** table? (Screenshot to show your answer)
