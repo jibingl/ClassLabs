@@ -43,7 +43,7 @@ The Apache web server is among the most popular web servers in the world. It’s
 
    This is the landing page of NSA 2024 Winter Afternoon Class.
    ```
-3. Access the web page by typing *http://your-server-ip* in a browser. Observe the difference from the previous Apache default web page. (Screenshot required)
+3. Access the web page by typing *http://your-web-server-ip* in a browser. Observe the difference from the previous Apache default web page. (Screenshot required)
 
 ### Create a web page with custom configurations
 1. Creating a *Virtual Host* config-file for your website.
@@ -96,7 +96,7 @@ The Apache web server is among the most popular web servers in the world. It’s
      </body>
    </html>
    ```
-9. Save and close the file. Open a broswer to access the new webpage at *http://your-server-ip* and observe the difference from the previous pages. (Screenshot required)
+9. Save and close the file. Open a broswer to access the new webpage at *http://your-web-server-ip* and observe the difference from the previous pages. (Screenshot required)
 
 
 ## Part 3 - MySQL Setup
@@ -184,7 +184,7 @@ You have Apache installed to serve your content and MySQL installed to store and
    <?php
    phoinfo();
    ```
-3. From your physical host machine, open a browser and access *http://your-linux-server-ip/php.info*, if you get a page with tables showing PHP configurations, your PHP successfully installed.
+3. From your physical host machine, open a browser and access *http://your-web-server-ip/php.info*, if you get a page with tables showing PHP configurations, your PHP successfully installed.
 
 
 ### Test PHP connection to MySQL
@@ -221,25 +221,25 @@ Now we are going to create a PHP script that will connect to MySQL and query for
 9. The following PHP script connects to the MySQL database and queries for the content of the **user** table, exhibiting the results in a list. If there’s a problem with the database connection, it will throw an exception.
 10. Add this content into your **con-php-mysql.php** file, remembering to replace the **Your-password** with your own:
     ```
-   <?php
-   $servername = "localhost";
-   $username = "sql_admin";
-   $password = "Your-password";
-   $database = "mysql";
-   $table = "user";
+    <?php
+    $servername = "localhost";
+    $username = "sql_admin";
+    $password = "Your-password";
+    $database = "mysql";
+    $table = "user";
 
-   try {
-     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-     echo "<h2>User Accounts of MYSQL</h2><ol>";
-     foreach($conn->query("SELECT Host,User,account_locked FROM $table") as $row) {
-       echo "<li>" . $row['Host'] . "</li>";
-     }
-     echo "</ol>";
-   } catch (PDOException $e) {
-       print "Error!: " . $e->getMessage() . "<br/>";
-       die();
-   }
-   ```
-11. Save the php file. Access *http://your-linux-erver-ip/con-php-mysql.php* on your physical host machine. (Screenshot required)
+    try {
+      $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+      echo "<h2>User Accounts of MYSQL</h2><ol>";
+      foreach($conn->query("SELECT Host,User,account_locked FROM $table") as $row) {
+        echo "<li>" . $row['Host'] . "</li>";
+      }
+      echo "</ol>";
+    } catch (PDOException $e) {
+        print "Error!: " . $e->getMessage() . "<br/>";
+        die();
+    }
+    ```
+11. Save the php file. Access *http://your-we-server-ip/con-php-mysql.php* on your physical host machine. (Screenshot required)
 12. From your Ubuntu server, sign in MySQL console as root and display all current connections to the database server.
     #### Question 2: Can you find the connection the webpage is using to query data from the **user** table? (Screenshot to show your answer)
