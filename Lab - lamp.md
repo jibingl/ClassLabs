@@ -190,9 +190,9 @@ You have Apache installed to serve your content and MySQL installed to store and
 2. Insert below content:
    ```
    <?php
-   phoinfo();
+   phpinfo();
    ```
-3. From your physical host machine, open a browser and access *http://your-web-server-ip/php.info*, if you get a page with tables showing PHP configurations, your PHP successfully installed.
+3. From your physical host machine, open a browser and access *http://your-web-server-ip/info.php*, if you get a page with tables showing PHP configurations, your PHP successfully installed.
 
 
 ### Test PHP connection to MySQL
