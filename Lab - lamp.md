@@ -253,6 +253,6 @@ Now we are going to create a PHP script that will connect to MySQL and query for
     #### Question 2: Can you find the connection the webpage is using to query data from the **user** table? (Screenshot to show your answer)
 
 ##### Referrences:
-[LAMP (software bundle)](https://en.wikipedia.org/wiki/LAMP_(software_bundle))
-[How To Install Linux, Apache, MySQL, PHP (LAMP) Stack on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu)
-[PHP Connect to MySQL](https://www.w3schools.com/php/php_mysql_connect.asp)
+1. [LAMP (software bundle)](https://en.wikipedia.org/wiki/LAMP_(software_bundle))
+2. [How To Install Linux, Apache, MySQL, PHP (LAMP) Stack on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu)
+3. [PHP Connect to MySQL](https://www.w3schools.com/php/php_mysql_connect.asp)
