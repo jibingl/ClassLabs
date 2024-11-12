@@ -76,7 +76,7 @@ The Apache web server is among the most popular web servers in the world. It’s
    ```
 4. You need to disable the default website that comes installed with Apache. Because Apache’s default configuration would override your virtual host. To disable Apache’s default website, type:
    ```
-   sudo a2disstie 000-defualt.conf
+   sudo a2dissite 000-default.conf
    ```
 5. Now, use a2ensite to enable the new virtual host:
    ```
