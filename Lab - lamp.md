@@ -116,7 +116,7 @@ Now you have a web server up and running. In most cases, you need to install the
    ```
 2. Verify installation and check MySQL version.
    ```
-   mysql -v
+   mysql -V
    ```
 3. Secure MySQL server default settings by running below command. Securing the MySQL server is an important step when protecting databases from unauthorized user access. In the following steps, disable insecure defaults to secure your database server.
    ```
