@@ -164,7 +164,7 @@ Now you have a web server up and running. In most cases, you need to install the
      ```
      mysql> show processlist;
      ```
-     #### Question: Can you find the connection currently you are using to interact with this database server? (Screenshot to show your answer)
+     #### Question 1: Can you find the connection currently you are using to interact with this database server? (Screenshot to show your answer)
 4. Now exit the MySQL console.
    ```
    mysql> exit;
