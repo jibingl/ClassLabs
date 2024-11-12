@@ -1,5 +1,13 @@
 # Lab - LAMP Stack
-A LAMP (Linux, Apache, MySQL, Perl/PHP/Python) is one of the most common software stacks for the web's most popular applications. Its generic software stack model has largely interchangeable components.
+Explanation from the *wikipedia*:
+> A LAMP (Linux, Apache, MySQL, Perl/PHP/Python) is one of the most common software stacks for the web's most popular applications. Its generic software stack model has largely interchangeable components.  
+> Each letter in the acronym stands for one of its four open-source building blocks:
+> - Linux for the operating system
+> - Apache HTTP Server
+> - MySQL for the relational database management system
+> - Perl, PHP, or Python for the programming language
+>
+> The components of the LAMP stack are present in the software repositories of most Linux distributions.
 
 ## Part 1 - Linux Server
 1. Create a virutal machine running Ubuntu server 24.04. If you already had one, skip this step.
@@ -243,3 +251,8 @@ Now we are going to create a PHP script that will connect to MySQL and query for
 11. Save the php file. Access *http://your-we-server-ip/con-php-mysql.php* on your physical host machine. (Screenshot required)
 12. From your Ubuntu server, sign in MySQL console as root and display all current connections to the database server.
     #### Question 2: Can you find the connection the webpage is using to query data from the **user** table? (Screenshot to show your answer)
+
+##### Referrences:
+[LAMP (software bundle)](https://en.wikipedia.org/wiki/LAMP_(software_bundle))
+[How To Install Linux, Apache, MySQL, PHP (LAMP) Stack on Ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-lamp-stack-on-ubuntu)
+[PHP Connect to MySQL](https://www.w3schools.com/php/php_mysql_connect.asp)
