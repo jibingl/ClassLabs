@@ -51,7 +51,7 @@ The Apache web server is among the most popular web servers in the world. It’s
 
    This is the landing page of NSA 2024 Winter Afternoon Class.
    ```
-3. Access the web page by typing *http://your-web-server-ip* in a browser. Observe the difference from the previous Apache default web page. (Screenshot required)
+3. Access the web page by typing *http://your-web-server-ip/index1.html* in a browser. Observe the difference from the previous Apache default web page. (Screenshot required)
 
 ### Create a web page with custom configurations
 1. Creating a *Virtual Host* config-file for your website.
