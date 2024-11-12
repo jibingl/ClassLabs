@@ -18,6 +18,8 @@ The Apache web server is among the most popular web servers in the world. It’s
    ```
 2. Confirm the installation by checking Apache versions and service status:
    ```shell
+   apache2ctl -v
+   systemctl status apache2
    ```
 
 ### Test Apache default settings
@@ -35,11 +37,10 @@ The Apache web server is among the most popular web servers in the world. It’s
 
    This is the landing page of NSA 2024 Winter Afternoon Class.
    ```
-3. Access the web page by typing *http://your-server-ip* in a browser. Observe the difference from the previous Apache default web page.
+3. Access the web page by typing *http://your-server-ip* in a browser. Observe the difference from the previous Apache default web page. (Screenshot required)
 
 ### Create a web page with custom configurations
 1. Creating a *Virtual Host* config-file for your website.
-   -------------------------------------------
    When using the Apache web server, you can create virtual hosts to encapsulate configuration details and host more than one domain from a single server. In this guide, we’ll set up a domain called nsa-w24-p2.local.
    ```
    sudo vim /etc/apache2/sites-available/nsa-w24-p2.conf
@@ -54,7 +55,7 @@ The Apache web server is among the most popular web servers in the world. It’s
        CustomLog ${APACHE_LOG_DIR}/access.log combined
    </VirtualHost>
    ```
-   With the line `DocumentRoot /var/www/nsa-w24-p2` in this VirtualHost configuration, we’re telling Apache to serve your_domain using */var/www/nsa-w24-p2* as the web root directory.
+   With the line `DocumentRoot /var/www/nsa-w24-p2` in this VirtualHost configuration, we’re telling Apache to serve your_domain using **/var/www/nsa-w24-p2** as the web root directory.
 3. To make sure your configuration file doesn’t contain syntax errors, run the following command:
    ```
    sudo apache2ctl configtest
@@ -71,33 +72,53 @@ The Apache web server is among the most popular web servers in the world. It’s
    ```
    sudo systemctl reload apache2
    ```
+7. Currently, the folder **/var/www/nsa-w24-p2** is not exist. Next, you need to create the folder, and then create a new web page html file inside.
+   ```
+   sudo mkdir /var/www/nsa-w24-p2/
+   sudo vim /var/www/nsa-w24-p2/index.html
+   ```
+8. Insert below content into the new webpage file **index.html**: (You don't need to learn html language for this lab, just copy and paste html codes by now.)
+   ```
+  <html>
+    <head>
+      <title>NSA Winter 2024 Class</title>
+    </head>
+    <body>
+      <h1>NSA Winter 2024 Class</h1>
+       
+      <p>This is the landing page of <strong>NSA 2024 Winter Afternoon Class</strong>.</p>
+    </body>
+  </html>
+  ```
 
-sudo mkdir /var/www/nsa-w24-p2/
-sudo vim /var/www/nsa-w24-p2/index.html
-<html>
-  <head>
-    <title>NSA Winter 2024 Class</title>
-  </head>
-  <body>
-    <h1>NSA Winter 2024 Class</h1>
-
-    <p>This is the landing page of <strong>NSA 2024 Winter Afternoon Class</strong>.</p>
-  </body>
-</html>
-
-http://<your-linux-server-ip>
-
-
-
-
-
-
-
-
-
-
+9. Save and close the file. Open a broswer to access the new webpage at *http://your-server-ip* and observe the difference from the previous pages. (Screenshot required)
 
 ## Part 3 - MySQL Setup
+Now you have a web server up and running. In most cases, you need to install the database system to be able to store and manage data for your site. MySQL is a popular database management system used within PHP environments.  
+### Install MySQL Server
+1. Install MySQL server
+   ```
+   sudo apt install mysql-server
+   ```
+2. Verify installation and check MySQL version.
+   ```
+   mysql -v
+   ```
+3. Secure MySQL server default settings by running below command. Securing the MySQL server is an important step when protecting databases from unauthorized user access. In the following steps, disable insecure defaults to secure your database server.
+   ```
+   sudo mysql_secure_installation
+   ```
+4. When prompted, input answers as below:
+   Questions | Answers | Notes |
+   ----------|---------|-------|
+   VALIDATE PASSWORD component: | No | Not best practice but for lab convinience.
+   Remove anonymous users?: | Yes | to revoke MySQL console access to unknown database users.
+   Disallow root login remotely?: | Yes | to disable remote access to the MySQL root user account on your server.
+   Remove test database and access to it?: | Yes | to delete the MySQL test databases.
+   Reload privilege tables now?: | Yes | to refresh the MySQL privilege tables and apply your new configuration changes.
+
+
+
 
 
 ## Part 4 - PHP Setup
@@ -110,16 +131,11 @@ Verify services versions and status
 
 2- Secure the MySQL Server
 -------------------------
-Securing the MySQL server is an important step when protecting databases from unauthorized user access. Privileged users such as root can access the MySQL database console by default. In the following steps, create a new MySQL root user password and disable insecure defaults to secure your database server.
+
 
 sudo mysql_secure_installation
 
 :
-VALIDATE PASSWORD component: No
-Remove anonymous users?: Yes to revoke MySQL console access to unknown database users.
-Disallow root login remotely?: Yes to disable remote access to the MySQL root user account on your server.
-Remove test database and access to it?: Yes to delete the MySQL test databases.
-Reload privilege tables now?: Yes to refresh the MySQL privilege tables and apply your new configuration changes.
 
 sudo systemctl restart mysqld
 
