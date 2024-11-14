@@ -250,7 +250,6 @@ Now we are going to create a PHP script that will connect to MySQL and query for
     ```
 11. Save the php file. Access *http://your-we-server-ip/con-php-mysql.php* on your physical host machine. (Screenshot required)
 12. From your Ubuntu server, sign in MySQL console as root and display all current connections to the database server.
-    #### Question 2: Can you find the connection the webpage is using to query data from the **user** table? (Screenshot to show your answer)
 
 ##### Referrences:
 1. [LAMP (software bundle)](https://en.wikipedia.org/wiki/LAMP_(software_bundle))
