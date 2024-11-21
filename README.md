@@ -1,2 +1,2 @@
-# Class Hands-on Labs
-Labs for network and system program classes
+# ClassLabs
+Labs for classes
